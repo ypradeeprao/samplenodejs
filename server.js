@@ -15,7 +15,7 @@ app.post('/weather', (req, res) => {
 
   // Simulated weather result
   const response = {
-    response: `☀️ It is sunnysun todayy in ${city}.`,
+    response: `☀️ It is sunnysunny todayy in ${city}.`,
     metadata: {
       city,
       forecast: "sunny",
