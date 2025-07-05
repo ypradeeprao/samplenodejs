@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: Weather Tool API
+  version: 1.0.0
+servers:
+  - url: http://YOUR_LIGHTSAIL_PUBLIC_IP:3000
+paths:
+  /weather:
+    get:
+      summary: Get weather for a city
+      operationId: getWeather
+      parameters:
+        - name: city
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Name of the city
+      responses:
+        '200':
+          description: Weather response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  city:
+                    type: string
+                  temperature:
+                    type: number
+                  unit:
+                    type: string
+                  condition:
+                    type: string
