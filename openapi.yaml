@@ -3,7 +3,7 @@ info:
   title: Weather Tool API
   version: 1.0.0
 servers:
-  - url: https://samplenodejs-chl1.onrender.com/3000
+  - url: https://samplenodejs-chl1.onrender.com
 paths:
   /weather:
     get:
