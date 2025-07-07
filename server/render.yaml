@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: flask-ai-agent
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python server/server.py
+    rootDir: server
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false

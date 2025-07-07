@@ -1,0 +1,93 @@
+openapi: 3.0.1
+info:
+  title: Flask AI Agent API
+  description: This API provides endpoints for messaging, AI chat, and calculator with AI explanations.
+  version: 1.0.0
+
+servers:
+  - url: https://samplenodejs-chl1.onrender.com  # 🔁 Replace with your deployed server domain
+
+paths:
+  /api/message:
+    get:
+      summary: Get welcome message
+      operationId: getMessage
+      responses:
+        '200':
+          description: Welcome message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /api/ask:
+    post:
+      summary: Ask a question and get a GPT-4 response
+      operationId: askGPT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: The user's input or question
+              required: [prompt]
+      responses:
+        '200':
+          description: GPT-4 AI response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+        '400':
+          description: Missing prompt
+        '500':
+          description: Server error
+
+  /api/calculate:
+    post:
+      summary: Perform a calculation and get an AI explanation
+      operationId: calculateWithAI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                num1:
+                  type: number
+                  description: First number
+                num2:
+                  type: number
+                  description: Second number
+                operator:
+                  type: string
+                  enum: ["+", "-", "*", "/"]
+                  description: Arithmetic operator
+              required: [num1, num2, operator]
+      responses:
+        '200':
+          description: Result and GPT explanation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: number
+                  explanation:
+                    type: string
+        '400':
+          description: Invalid input (missing data or division by zero)
+        '500':
+          description: Server error
