@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: Flask AI Agent API
   description: This API provides endpoints for messaging, AI chat, and calculator with AI explanations.
